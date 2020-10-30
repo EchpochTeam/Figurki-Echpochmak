@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "figurkiechpochmak:item/mini_somik"
+    "layer0": "figurkiechpochmak:item/mini_bomb"
   }
 }

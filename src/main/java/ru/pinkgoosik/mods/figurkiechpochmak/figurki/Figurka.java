@@ -10,6 +10,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import ru.pinkgoosik.mods.figurkiechpochmak.FigurkiEchpochmak;
 
 
@@ -23,7 +25,6 @@ public class Figurka extends HorizontalFacingBlock {
         stateManager.add(Properties.HORIZONTAL_FACING);
     }
     @Override
-
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
         return VoxelShapes.cuboid(0.25f, 0f, 0.25f, 0.75f, 0.95f, 0.75f);
     }
@@ -42,6 +43,16 @@ public class Figurka extends HorizontalFacingBlock {
                 return (BlockState)this.getDefaultState().with(FACING, ctx.getPlayerFacing());
         }
     }
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
+        return direction == Direction.DOWN && !this.canPlaceAt(state, world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return sideCoversSmallSquare(world, pos.down(), Direction.UP);
+    }
+    @Override
     public BlockRenderType getRenderType(BlockState blockState) {
         return BlockRenderType.MODEL;
     }
