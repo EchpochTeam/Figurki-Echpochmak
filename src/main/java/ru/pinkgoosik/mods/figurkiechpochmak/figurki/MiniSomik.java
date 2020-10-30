@@ -27,6 +27,9 @@ public class MiniSomik extends Figurka{
         if (Figurka.isReceivingGoosikPower(pos, world)) {
             Random randomX = new Random();
             world.addParticle(ParticleTypes.HEART,pos.getX()+randomX.nextInt(2),pos.getY()
+                    +randomX.nextInt(2),pos.getZ()+randomX.nextInt(2),0.0D,0.0D,0.0D);
+
+            world.addParticle(ParticleTypes.HEART,pos.getX()-randomX.nextInt(2),pos.getY()
                     +randomX.nextInt(2),pos.getZ()-randomX.nextInt(2),0.0D,0.0D,0.0D);
         }
     }

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "figurkiechpochmak:block/mini_goosik" },
+    "facing=east":  { "model": "figurkiechpochmak:block/mini_goosik", "y":  90},
+    "facing=south": { "model": "figurkiechpochmak:block/mini_goosik", "y": 180 },
+    "facing=west":  { "model": "figurkiechpochmak:block/mini_goosik", "y": 270 }
+  }
+}
