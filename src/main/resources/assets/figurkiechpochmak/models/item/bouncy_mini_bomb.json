@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "figurkiechpochmak:item/bouncy_mini_bomb"
+  }
+}

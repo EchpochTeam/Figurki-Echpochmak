@@ -4,17 +4,15 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+
 
 @SuppressWarnings("EntityConstructor") //Тупой плагин mc dev
 public class MiniBombEntity extends ThrownItemEntity {
@@ -44,18 +42,17 @@ public class MiniBombEntity extends ThrownItemEntity {
         }
 
     }
-
-    protected void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
-        entityHitResult.getEntity().damage(DamageSource.thrownProjectile(this, this.getOwner()), 0.0F);
-    }
-
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        if (!this.world.isClient) {
-            world.createExplosion(null,hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), 2.0F, Explosion.DestructionType.NONE);
+        if (hitResult.getType() == HitResult.Type.ENTITY) {
+            world.createExplosion(null,hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), 1.0F, Explosion.DestructionType.NONE);
             this.world.sendEntityStatus(this, (byte)3);
             this.remove();
+        }
+        if (!this.world.isClient) {
+                world.createExplosion(null,hitResult.getPos().getX(), hitResult.getPos().getY(), hitResult.getPos().getZ(), 1.0F, Explosion.DestructionType.NONE);
+                this.world.sendEntityStatus(this, (byte)3);
+                this.remove();
         }
 
     }

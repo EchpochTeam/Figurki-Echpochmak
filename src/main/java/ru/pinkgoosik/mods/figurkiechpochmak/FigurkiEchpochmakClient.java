@@ -14,6 +14,7 @@ public class FigurkiEchpochmakClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FigurkiEchpochmak.MINI_TETSA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FigurkiEchpochmak.MINI_GOOSIK, RenderLayer.getCutout());
         EntityRendererRegistry.INSTANCE.register(FigurkiEchpochmak.BOMB, (dispatcher, context) -> new FlyingItemEntityRenderer<MiniBombEntity>(dispatcher, context.getItemRenderer()));
+        EntityRendererRegistry.INSTANCE.register(FigurkiEchpochmak.BOUNCY_BOMB, (dispatcher, context) -> new FlyingItemEntityRenderer<MiniBombEntity>(dispatcher, context.getItemRenderer()));
     }
 
 }

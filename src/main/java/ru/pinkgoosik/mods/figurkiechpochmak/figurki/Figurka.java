@@ -89,4 +89,20 @@ public class Figurka extends HorizontalFacingBlock {
             return world.getBlockState(pos.east()).getBlock().equals(block);
         }
     }
+    public static boolean isReceivingSomikPower(BlockPos pos, World world) {
+        Block block = FigurkiEchpochmak.MINI_GOOSIK.getDefaultState().getBlock();
+        if (world.getBlockState(pos.down()).getBlock().equals(block)) {
+            return true;
+        } else if (world.getBlockState(pos.up()).getBlock().equals(block)) {
+            return true;
+        } else if (world.getBlockState(pos.north()).getBlock().equals(block)) {
+            return true;
+        } else if (world.getBlockState(pos.south()).getBlock().equals(block)) {
+            return true;
+        } else if (world.getBlockState(pos.west()).getBlock().equals(block)) {
+            return true;
+        } else {
+            return world.getBlockState(pos.east()).getBlock().equals(block);
+        }
+    }
 }
