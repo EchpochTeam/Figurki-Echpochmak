@@ -1,6 +1,7 @@
 package ru.pinkgoosik.mods.figurkiechpochmak;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -16,6 +17,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.Position;
@@ -33,12 +35,17 @@ import ru.pinkgoosik.mods.figurkiechpochmak.item.MiniBomb;
 
 public class FigurkiEchpochmak implements ModInitializer {
 
+	public static final ItemGroup FE_GENERAL = FabricItemGroupBuilder.build(
+			new Identifier("figurkiechpochmak", "general"),
+			()-> new ItemStack(FigurkiEchpochmak.MINI_GOOSIK));
+	public static final Identifier SOMIK_DISAPPEAR_ID = new Identifier("figurkiechpochmak:somik_disappear");
+	public static SoundEvent SOMIK_DISAPPEAR_EVENT = new SoundEvent(SOMIK_DISAPPEAR_ID);
 	public static final Block MINI_SOMIK = new MiniSomik(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).nonOpaque().sounds(BlockSoundGroup.WOOL));
 	public static final Block MINI_TETSA = new MiniTetsa(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).nonOpaque().sounds(BlockSoundGroup.WOOL));
 	public static final Block MINI_GOOSIK = new MiniGoosik(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).nonOpaque().sounds(BlockSoundGroup.WOOL));
 	public static final Block MINI_SPACE = new MiniSpace(FabricBlockSettings.copyOf(Blocks.BLACK_WOOL).nonOpaque().sounds(BlockSoundGroup.WOOL));
-	public static final Item MINI_BOMB = new MiniBomb(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16));
-	public static final Item BOUNCY_MINI_BOMB = new BouncyMiniBomb(new FabricItemSettings().group(ItemGroup.COMBAT).maxCount(16));
+	public static final Item MINI_BOMB = new MiniBomb(new FabricItemSettings().group(FigurkiEchpochmak.FE_GENERAL).maxCount(16));
+	public static final Item BOUNCY_MINI_BOMB = new BouncyMiniBomb(new FabricItemSettings().group(FigurkiEchpochmak.FE_GENERAL).maxCount(16));
 	public static final EntityType<MiniBombEntity> BOMB = Registry.register(
 			Registry.ENTITY_TYPE,
 			new Identifier("figurkiechpochmak", "mini_bomb"),
@@ -53,19 +60,22 @@ public class FigurkiEchpochmak implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Registry.register(Registry.BLOCK, new Identifier("figurkiechpochmak", "mini_somik"), MINI_SOMIK);
-		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_somik"), new BlockItem(MINI_SOMIK, new Item.Settings()));
+		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_somik"), new BlockItem(MINI_SOMIK, new Item.Settings().group(FigurkiEchpochmak.FE_GENERAL)));
 
 		Registry.register(Registry.BLOCK, new Identifier("figurkiechpochmak", "mini_tetsa"), MINI_TETSA);
-		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_tetsa"), new BlockItem(MINI_TETSA, new Item.Settings()));
+		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_tetsa"), new BlockItem(MINI_TETSA, new Item.Settings().group(FigurkiEchpochmak.FE_GENERAL)));
 
 		Registry.register(Registry.BLOCK, new Identifier("figurkiechpochmak", "mini_goosik"), MINI_GOOSIK);
-		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_goosik"), new BlockItem(MINI_GOOSIK, new Item.Settings()));
+		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_goosik"), new BlockItem(MINI_GOOSIK, new Item.Settings().group(FigurkiEchpochmak.FE_GENERAL)));
 
 		Registry.register(Registry.BLOCK, new Identifier("figurkiechpochmak", "mini_space"), MINI_SPACE);
-		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_space"), new BlockItem(MINI_SPACE, new Item.Settings()));
+		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_space"), new BlockItem(MINI_SPACE, new Item.Settings().group(FigurkiEchpochmak.FE_GENERAL)));
 
 		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "mini_bomb"), MINI_BOMB);
 		Registry.register(Registry.ITEM, new Identifier("figurkiechpochmak", "bouncy_mini_bomb"), BOUNCY_MINI_BOMB);
+
+		Registry.register(Registry.SOUND_EVENT, FigurkiEchpochmak.SOMIK_DISAPPEAR_ID, SOMIK_DISAPPEAR_EVENT);
+
 		DispenserBlock.registerBehavior(FigurkiEchpochmak.MINI_BOMB, new ProjectileDispenserBehavior() {
 			@Override
 			protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
