@@ -34,8 +34,10 @@ public class MiniSomik extends Figurka{
                     itemStack.decrement(1);
                 }
             }
+            return ActionResult.SUCCESS;
+        }else{
+            return super.onUse(state, world, pos, player, hand, hit);
         }
-        return ActionResult.SUCCESS;
     }
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
         if (Figurka.isReceivingTetsaPower(pos, world)) {

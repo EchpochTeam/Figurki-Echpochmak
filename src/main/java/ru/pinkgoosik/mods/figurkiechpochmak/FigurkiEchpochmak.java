@@ -84,15 +84,5 @@ public class FigurkiEchpochmak implements ModInitializer {
 				});
 			}
 		});
-		DispenserBlock.registerBehavior(FigurkiEchpochmak.BOUNCY_MINI_BOMB, new ProjectileDispenserBehavior() {
-			@Override
-			protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
-				return Util.make(new BouncyMiniBombEntity(world, position.getX(), position.getY(), position.getZ()), (snowballEntity) -> {
-					snowballEntity.setItem(stack);
-				});
-			}
-		});
-
-
 	}
 }

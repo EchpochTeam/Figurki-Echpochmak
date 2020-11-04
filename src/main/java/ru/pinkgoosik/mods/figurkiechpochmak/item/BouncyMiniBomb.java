@@ -24,7 +24,7 @@ public class BouncyMiniBomb extends Item {
         if (!world.isClient) {
             BouncyMiniBombEntity bouncyMiniBombEntity = new BouncyMiniBombEntity(world, user);
             bouncyMiniBombEntity.setItem(itemStack);
-            bouncyMiniBombEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 0.4F, 0.4F);
+            bouncyMiniBombEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 0.5F, 0.4F);
             world.spawnEntity(bouncyMiniBombEntity);
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this));

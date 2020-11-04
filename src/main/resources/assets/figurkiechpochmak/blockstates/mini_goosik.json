@@ -1,8 +1,12 @@
 {
   "variants": {
-    "facing=north": { "model": "figurkiechpochmak:block/mini_goosik" },
-    "facing=east":  { "model": "figurkiechpochmak:block/mini_goosik", "y":  90},
-    "facing=south": { "model": "figurkiechpochmak:block/mini_goosik", "y": 180 },
-    "facing=west":  { "model": "figurkiechpochmak:block/mini_goosik", "y": 270 }
+    "facing=north,waterlogged=true": { "model": "figurkiechpochmak:block/waterlogged_mini_goosik" },
+    "facing=east,waterlogged=true":  { "model": "figurkiechpochmak:block/waterlogged_mini_goosik", "y": 90},
+    "facing=south,waterlogged=true": { "model": "figurkiechpochmak:block/waterlogged_mini_goosik", "y": 180 },
+    "facing=west,waterlogged=true":  { "model": "figurkiechpochmak:block/waterlogged_mini_goosik", "y": 270 },
+    "facing=north,waterlogged=false": { "model": "figurkiechpochmak:block/mini_goosik" },
+    "facing=east,waterlogged=false":  { "model": "figurkiechpochmak:block/mini_goosik", "y": 90},
+    "facing=south,waterlogged=false": { "model": "figurkiechpochmak:block/mini_goosik", "y": 180 },
+    "facing=west,waterlogged=false":  { "model": "figurkiechpochmak:block/mini_goosik", "y": 270 }
   }
 }
