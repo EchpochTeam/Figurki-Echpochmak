@@ -40,14 +40,14 @@ public class MiniSomik extends Figurka{
         }
     }
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
-        if (Figurka.isReceivingTetsaPower(pos, world)) {
+        if (Figurka.isReceivingSomeonesPower(pos, world,FigurkiEchpochmak.MINI_TETSA)) {
             world.removeBlock(pos, false);
             world.createExplosion(null,pos.getX(), pos.getY(), pos.getZ(), 4.0F, Explosion.DestructionType.NONE);
         }
     }
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (Figurka.isReceivingGoosikPower(pos, world)) {
+        if (Figurka.isReceivingSomeonesPower(pos, world, FigurkiEchpochmak.MINI_GOOSIK)) {
             Random randomX = new Random();
             world.addParticle(ParticleTypes.HEART,pos.getX()+randomX.nextInt(2),pos.getY()
                     +randomX.nextInt(2),pos.getZ()+randomX.nextInt(2),0.0D,0.0D,0.0D);

@@ -16,7 +16,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import ru.pinkgoosik.mods.figurkiechpochmak.FigurkiEchpochmak;
 
 
 public class Figurka extends HorizontalFacingBlock implements Waterloggable{
@@ -41,22 +40,9 @@ public class Figurka extends HorizontalFacingBlock implements Waterloggable{
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        Direction dir = ctx.getPlayerFacing();
         BlockPos blockPos = ctx.getBlockPos();
         FluidState fluidState = ctx.getWorld().getFluidState(blockPos);
-        BlockState blockState = this.getDefaultState().with(FACING, ctx.getPlayerFacing()).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
-        switch(dir) {
-            case NORTH:
-                return blockState.with(FACING, Direction.SOUTH);
-            case SOUTH:
-                return blockState.with(FACING, Direction.NORTH);
-            case EAST:
-                return blockState.with(FACING, Direction.WEST);
-            case WEST:
-                return blockState.with(FACING, Direction.EAST);
-            default:
-                return blockState.with(FACING, ctx.getPlayerFacing());
-        }
+        return this.getDefaultState().with(FACING,ctx.getPlayerFacing().getOpposite()).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
@@ -75,52 +61,19 @@ public class Figurka extends HorizontalFacingBlock implements Waterloggable{
         return BlockRenderType.MODEL;
     }
 
-    public static boolean isReceivingTetsaPower(BlockPos pos, World world) {
-        Block block = FigurkiEchpochmak.MINI_TETSA.getDefaultState().getBlock();
-        if (world.getBlockState(pos.down()).getBlock().equals(block)) {
+    public static boolean isReceivingSomeonesPower(BlockPos pos, World world, Block figurka) {
+        if (world.getBlockState(pos.down()).getBlock().equals(figurka)) {
             return true;
-        } else if (world.getBlockState(pos.up()).getBlock().equals(block)) {
+        } else if (world.getBlockState(pos.up()).getBlock().equals(figurka)) {
             return true;
-        } else if (world.getBlockState(pos.north()).getBlock().equals(block)) {
+        } else if (world.getBlockState(pos.north()).getBlock().equals(figurka)) {
             return true;
-        } else if (world.getBlockState(pos.south()).getBlock().equals(block)) {
+        } else if (world.getBlockState(pos.south()).getBlock().equals(figurka)) {
             return true;
-        } else if (world.getBlockState(pos.west()).getBlock().equals(block)) {
-            return true;
-        } else {
-            return world.getBlockState(pos.east()).getBlock().equals(block);
-        }
-    }
-    public static boolean isReceivingGoosikPower(BlockPos pos, World world) {
-        Block block = FigurkiEchpochmak.MINI_GOOSIK.getDefaultState().getBlock();
-        if (world.getBlockState(pos.down()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.up()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.north()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.south()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.west()).getBlock().equals(block)) {
+        } else if (world.getBlockState(pos.west()).getBlock().equals(figurka)) {
             return true;
         } else {
-            return world.getBlockState(pos.east()).getBlock().equals(block);
-        }
-    }
-    public static boolean isReceivingSomikPower(BlockPos pos, World world) {
-        Block block = FigurkiEchpochmak.MINI_SOMIK.getDefaultState().getBlock();
-        if (world.getBlockState(pos.down()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.up()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.north()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.south()).getBlock().equals(block)) {
-            return true;
-        } else if (world.getBlockState(pos.west()).getBlock().equals(block)) {
-            return true;
-        } else {
-            return world.getBlockState(pos.east()).getBlock().equals(block);
+            return world.getBlockState(pos.east()).getBlock().equals(figurka);
         }
     }
     static {

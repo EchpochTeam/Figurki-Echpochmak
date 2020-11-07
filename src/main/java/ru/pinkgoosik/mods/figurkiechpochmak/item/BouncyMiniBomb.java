@@ -20,7 +20,7 @@ public class BouncyMiniBomb extends Item {
         playerYawHoo = user.yaw;
         ItemStack itemStack = user.getStackInHand(hand);
         user.getItemCooldownManager().set(this, 40);
-        world.playSound((PlayerEntity)null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.PLAYERS, 0.5F, 0.4F / (RANDOM.nextFloat() * 0.4F + 0.8F));
         if (!world.isClient) {
             BouncyMiniBombEntity bouncyMiniBombEntity = new BouncyMiniBombEntity(world, user);
             bouncyMiniBombEntity.setItem(itemStack);

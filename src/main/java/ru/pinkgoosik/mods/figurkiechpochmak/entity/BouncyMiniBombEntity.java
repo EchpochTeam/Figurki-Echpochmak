@@ -21,7 +21,7 @@ import ru.pinkgoosik.mods.figurkiechpochmak.item.BouncyMiniBomb;
 
 
 @SuppressWarnings("EntityConstructor") //Тупой плагин mc dev
-public class BouncyMiniBombEntity extends ThrownItemEntity {
+public class BouncyMiniBombEntity extends ThrownItemEntity{
     private static final TrackedData<Integer> NUMBER_OF_JUMPS = DataTracker.registerData(BouncyMiniBombEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final TrackedData<Float> PLAYER_YAW = DataTracker.registerData(BouncyMiniBombEntity.class, TrackedDataHandlerRegistry.FLOAT);
 
@@ -31,9 +31,6 @@ public class BouncyMiniBombEntity extends ThrownItemEntity {
     public BouncyMiniBombEntity(World world, LivingEntity owner) {
         super(EntityType.SNOWBALL, owner, world);
     }
-    public BouncyMiniBombEntity(World world, double x, double y, double z) {
-        super(EntityType.SNOWBALL, x, y, z, world);
-    }
 
     protected Item getDefaultItem() {
         return Items.SNOWBALL;
@@ -42,7 +39,6 @@ public class BouncyMiniBombEntity extends ThrownItemEntity {
     protected void initDataTracker() {
         this.dataTracker.startTracking(NUMBER_OF_JUMPS, 0);
         this.dataTracker.startTracking(PLAYER_YAW, BouncyMiniBomb.getPlayerYaw());
-
         super.initDataTracker();
     }
 

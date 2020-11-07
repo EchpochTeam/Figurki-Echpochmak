@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import ru.pinkgoosik.mods.figurkiechpochmak.entity.BouncyMiniBombEntity;
 import ru.pinkgoosik.mods.figurkiechpochmak.entity.MiniBombEntity;
 
 public class FigurkiEchpochmakClient implements ClientModInitializer {
@@ -14,7 +15,7 @@ public class FigurkiEchpochmakClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(FigurkiEchpochmak.MINI_TETSA, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(FigurkiEchpochmak.MINI_GOOSIK, RenderLayer.getCutout());
         EntityRendererRegistry.INSTANCE.register(FigurkiEchpochmak.BOMB, (dispatcher, context) -> new FlyingItemEntityRenderer<MiniBombEntity>(dispatcher, context.getItemRenderer()));
-        EntityRendererRegistry.INSTANCE.register(FigurkiEchpochmak.BOUNCY_BOMB, (dispatcher, context) -> new FlyingItemEntityRenderer<MiniBombEntity>(dispatcher, context.getItemRenderer()));
+        EntityRendererRegistry.INSTANCE.register(FigurkiEchpochmak.BOUNCY_BOMB, (dispatcher, context) -> new FlyingItemEntityRenderer<BouncyMiniBombEntity>(dispatcher, context.getItemRenderer()));
     }
 
 }
