@@ -36,7 +36,7 @@ public class Figurka extends HorizontalFacingBlock implements Waterloggable{
     }
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, ShapeContext context) {
-        return VoxelShapes.cuboid(0.25f, 0f, 0.25f, 0.75f, 0.95f, 0.75f);
+        return VoxelShapes.cuboid(0.25f, 0f, 0.25f, 0.75f, 1f, 0.75f);
     }
 
     public BlockState getPlacementState(ItemPlacementContext ctx) {
