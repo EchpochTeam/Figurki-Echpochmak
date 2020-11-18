@@ -2,5 +2,9 @@
   "block.figurkiechpochmak.mini_somik": "Mini Somik",
   "block.figurkiechpochmak.mini_tetsa": "Mini Tetsa",
   "block.figurkiechpochmak.mini_goosik": "Mini Goosik",
-  "subtitles.figurkiechpochmak.somik_disappear": "Somik Disappear"
+  "block.figurkiechpochmak.mini_space": "Mini Space WIP",
+  "subtitles.figurkiechpochmak.somik_disappear": "Somik disappear",
+  "item.figurkiechpochmak.mini_bomb": "Mini Bomb",
+  "item.figurkiechpochmak.bouncy_mini_bomb": "Bouncy Mini Bomb",
+  "itemGroup.figurkiechpochmak.general": "Figurki Echpochmak"
 }

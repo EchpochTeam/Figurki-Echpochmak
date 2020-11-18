@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "figurkiechpochmak:mini_bomb"
+        },
+        {
+            "item": "minecraft:slime_ball"
+        }
+    ],
+    "result": {
+        "item": "figurkiechpochmak:bouncy_mini_bomb",
+        "count": 1
+    }
+}

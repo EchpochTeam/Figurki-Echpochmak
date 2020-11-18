@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " # ",
+        "#A#",
+        " # "
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:pink_wool"
+        },
+        "A": {
+            "item": "minecraft:armor_stand"
+        }
+    },
+    "result": {
+        "item": "figurkiechpochmak:mini_goosik",
+        "count": 1
+    }
+}
